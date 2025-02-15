@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import DiceRoller from "./DiceRoller"; // Import the dice roller component
+import "./styles.css"; // Import the CSS file
 
-function App() {
+export default function App() {
+  const [showIntro, setShowIntro] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      {showIntro ? (
+        <div className="intro-screen">
+          <h1>🎲 Welcome to Sevens, Elevens, and Doubles! 🎲</h1>
+          <p>Click play to start the game.</p>
+          <button className="button" onClick={() => setShowIntro(false)}>
+            Play ▶
+          </button>
+        </div>
+      ) : (
+        <DiceRoller />
+      )}
     </div>
   );
 }
-
-export default App;
