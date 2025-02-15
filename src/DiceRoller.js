@@ -33,7 +33,7 @@ const DiceRoller = () => {
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
       {/* Title */}
-      <h2>Sevens, Elevens, and Doubles mother fuckas</h2>
+      <h2>Sevens, Elevens, and Doubles </h2>
 
       {/* Display the dice values */}
       <div style={{ fontSize: "24px", margin: "10px" }}>
