@@ -15,7 +15,7 @@
 /* 3D Balloon Gold Text */
 .transition-screen h1 {
     font-size: 100px;
-    font-family: "Fredoka One", "Comic Sans MS", cursive; /* Balloon-like font */
+    font-family: "Fredoka One", "Comic Sans MS", cursive; /* Bubble-like font */
     font-weight: bold;
     text-transform: uppercase;
     background: linear-gradient(45deg, #ffd700, #ffecb3, #ffb400);
@@ -31,6 +31,132 @@
     border-radius: 20px; /* Rounded look */
 }
 
+/* Center everything on the screen */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #8b0000, #ff2020); /* Deep red gradient */
+    color: white;
+}
+
+/* Timer Section */
+.timer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent overlay */
+    border-radius: 15px;
+}
+
+/* Button Container - Even Spacing Between Lift & Place Cup Buttons */
+.button-container {
+    display: flex;
+    justify-content: center; /* Keeps buttons in the center */
+    gap: 50px; /* Adds equal space between buttons */
+    width: 100%;
+    max-width: 400px; /* Prevents buttons from spreading too far apart */
+    margin-top: 20px;
+}
+
+/* Lift Cup and Place Cup Sections */
+.lift-cup, .place-cup {
+    flex: 1; /* Ensures equal spacing */
+    text-align: center; /* Centers buttons within their sections */
+}
+
+/* Apply bubble letters to all text */
+body, h1, h2, p, button {
+    font-family: "Fredoka One", "Comic Sans MS", cursive; /* Bubble-like font */
+}
+
+/* Ensure buttons also have bubble text */
+.button {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Lift Cup Button Styling */
+.lift-button {
+    background: #ffcc00;
+    color: black;
+    transition: transform 0.2s ease-in-out;
+}
+.lift-button:hover {
+    transform: scale(1.1);
+}
+
+/* Place Cup Button Styling */
+.place-button {
+    background: #ff4444;
+    color: white;
+    transition: transform 0.2s ease-in-out;
+}
+.place-button:hover {
+    transform: scale(1.1);
+}
+/* Dice Roller Section */
+.dice-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent overlay */
+    border-radius: 15px;
+    max-width: 400px;
+}
+
+/* Title Bubble Letter Style */
+.dice-title {
+    font-size: 32px;
+    font-family: "Fredoka One", "Comic Sans MS", cursive; /* Bubble-like font */
+    text-transform: uppercase;
+    color: white;
+}
+
+/* Dice Display */
+.dice-display {
+    font-size: 40px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+/* Dice Message Styling */
+.dice-message {
+    font-size: 18px;
+    margin-top: 10px;
+    font-family: "Fredoka One", "Comic Sans MS", cursive;
+}
+
+/* Roll Dice Button */
+.roll-button {
+    background: #ffcc00;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.roll-button:hover {
+    transform: scale(1.1);
+}
 /* Bouncy Floating Effect */
 @keyframes bounce {
     from {
@@ -45,13 +171,15 @@
 @keyframes fadeOut {
     0% {
         opacity: 1;
+        background: linear-gradient(135deg, #8b0000, #ff2020); /* Deep red gradient */
     }
     50% {
         opacity: 0.8;
+        background: linear-gradient(135deg, #a00000, #ff4040); /* Slightly brighter red */
     }
     100% {
         opacity: 0;
         visibility: hidden;
+        background: linear-gradient(135deg, #8b0000, #ff2020); /* Keep final transition red */
     }
 }
-

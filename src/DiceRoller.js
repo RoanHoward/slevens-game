@@ -1,58 +1,45 @@
-// Import React and useState hook (to manage dice values and messages)
 import React, { useState } from "react";
 
-const DiceRoller = () => {
-  // State to store dice values (initially set to [1,1])
-  const [dice, setDice] = useState([1, 1]);
+export default function DiceRoller({ stopTimer, isDrinking, startTime, message, setMessage }) { // ✅ Receive setMessage as a prop
+    const [dice, setDice] = useState([1, 1]);
 
-  // State to store the message (what happens after rolling)
-  const [message, setMessage] = useState("");
+    const rollDice = () => {
+        const die1 = Math.floor(Math.random() * 6) + 1;
+        const die2 = Math.floor(Math.random() * 6) + 1;
+        setDice([die1, die2]);
 
-  // Function to roll the dice
-  const rollDice = () => {
-    // Generate two random numbers between 1 and 6 (inclusive)
-    const die1 = Math.floor(Math.random() * 6) + 1;
-    const die2 = Math.floor(Math.random() * 6) + 1;
+        const sum = die1 + die2;
 
-    // Update the state with new dice values
-    setDice([die1, die2]);
+        if (sum === 7 || sum === 11) {
+            if (isDrinking && startTime) {
+                setMessage("Drink again!!"); // ✅ Now updates globally
+            } else {
+                setMessage("You rolled a 7 or 11! Pick someone to drink and then start the timer! 🍻"); // ✅ Updates globally
+            }
+            console.log("🎲 Rolled 7 or 11! Stopping timer...");
+            stopTimer();
+        } else if (die1 === die2) {
+            if (isDrinking && startTime) {
+                setMessage("Drink again!!"); // ✅ Now updates globally
+            } else {
+                setMessage("You rolled doubles! Pick someone to drink and then start the timer! 🍻"); // ✅ Updates globally
+            }
+            console.log("🎲 Rolled doubles! Stopping timer...");
+            stopTimer();
+        } else {
+            if (isDrinking && startTime) {
+              setMessage("Keep rolling!!");
+            } else {
+              setMessage("Next person's turn to roll!"); // ✅ Updates globally
+            }
+        }
+    };
 
-    // Calculate the sum of the two dice
-    const sum = die1 + die2;
-
-    // Determine the message based on the roll outcome
-    if (sum === 7 || sum === 11) {
-      setMessage("You rolled a 7 or 11! Pick someone to drink! 🍻");
-    } else if (die1 === die2) {
-      setMessage("Doubles! Pick someone to drink twice! 🍹");
-    } else {
-      setMessage("Roll again!");
-    }
-  };
-
-  return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
-      {/* Title */}
-      <h2>Sevens, Elevens, and Doubles </h2>
-
-      {/* Display the dice values */}
-      <div style={{ fontSize: "24px", margin: "10px" }}>
-        🎲 {dice[0]} 🎲 {dice[1]}
-      </div>
-
-      {/* Button to roll the dice */}
-      <button
-        onClick={rollDice}
-        style={{ padding: "10px 20px", fontSize: "18px", cursor: "pointer" }}
-      >
-        Roll Dice 🎲
-      </button>
-
-      {/* Display message based on roll outcome */}
-      <p style={{ fontSize: "18px", marginTop: "10px" }}>{message}</p>
-    </div>
-  );
-};
-
-// Export the component so it can be used in other files
-export default DiceRoller;
+    return (
+        <div className="dice-section">
+            <h2 className="dice-title">Sevens, Elevens, and Doubles</h2>
+            <div className="dice-display">🎲 {dice[0]} 🎲 {dice[1]}</div>
+            <button className="roll-button" onClick={rollDice}>Roll Dice 🎲</button>
+        </div>
+    );
+}
