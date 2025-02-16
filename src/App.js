@@ -95,6 +95,9 @@ export default function App() {
                         message={message} // ✅ Pass message as a prop
                         setMessage={setMessage} // ✅ Pass setMessage as a prop
                     />
+
+                    <p className="dice-message">{message}</p> {/* ✅ Display message here */}
+
                     <DrinkingTimer 
                         startTimer={startTimer}
                         stopTimer={stopTimer}
@@ -103,7 +106,6 @@ export default function App() {
                         drinkingTime={drinkingTime}
                         setMessage={setMessage} // ✅ Pass setMessage as a prop
                     />
-                    <p className="dice-message">{message}</p> {/* ✅ Display message here */}
                 </div>
             )}
         </div>

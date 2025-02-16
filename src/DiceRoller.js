@@ -2,8 +2,11 @@ import React, { useState } from "react";
 
 export default function DiceRoller({ stopTimer, isDrinking, startTime, message, setMessage }) { // ✅ Receive setMessage as a prop
     const [dice, setDice] = useState([1, 1]);
+    const [lastRoll, setLastRoll] = useState(0);
 
     const rollDice = () => {
+        if (Date.now() < lastRoll + 1000) return;
+        setLastRoll(Date.now());
         const die1 = Math.floor(Math.random() * 6) + 1;
         const die2 = Math.floor(Math.random() * 6) + 1;
         setDice([die1, die2]);
